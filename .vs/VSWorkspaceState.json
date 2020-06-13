@@ -1,7 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\VSDanalysis"
   ],
-  "SelectedNode": "\\test.txt",
+  "SelectedNode": "\\VSDanalysis\\cullUnnecessaryPixels.m",
   "PreviewInSolutionExplorer": false
 }
