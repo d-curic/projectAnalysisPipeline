@@ -5,7 +5,7 @@ for i = 1:length(project.recordings)
     project.recordings{i}.ExtrasDirectory = getSubDirectory(recordingLocation, 'Extra');
 
     name = project.recordings{i}.name;
-    lfpid = ['00' name(1:2)];
+    lfpid = ['00' name(5:6)];
     [project.recordings{i}.LFP, project.recordingsWithLFPs(i)] = getLFPlocation(project.recordings{i}.ExtrasDirectory, lfpid);
     
 end

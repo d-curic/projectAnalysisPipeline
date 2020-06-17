@@ -11,7 +11,7 @@ if isfolder([ExtraDir 'LFP/'])
     if sum(X) == 1;
         LFPlocation = N(X);
         LFPlocation = LFPlocation{1};
-        LFPlocation = [ExtraDir LFPlocation];
+        LFPlocation = [ExtraDir 'LFP/' LFPlocation];
         found = true;
     elseif sum(X) > 1;
         LFPlocation = 'More than one LFP found';

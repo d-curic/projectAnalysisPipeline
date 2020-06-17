@@ -7,7 +7,6 @@ function data = reshapeFlipRotRAW(data, sz)
 X = sz(1);
 Y = sz(2);
 if length(sz) == 3
-    Z = sz(3);
     data = reshape(data, X,Y,[]);
 elseif length(sz) == 2
     data = reshape(data, X, Y);

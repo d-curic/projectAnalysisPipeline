@@ -1,16 +1,22 @@
-projectfile = 'E:\newVSDpipeline\ADvsControl\ADvsControl.proj';
-load(projectfile, '-mat');
+projectpath = 'E:\newVSDpipeline\VSDanalysis\ADvsControl\';
+projectname = 'ADvsControl2';
+filename = [projectpath projectname];
+project = loadProject(projectpath, [projectname '.proj']);
+save([filename  '_backup.proj'], 'project', '-mat')
 
+%%
 project = findMasks(project);
 project = findLFPs(project);
 
 for i = 1:length(project.recordings)
-    project.recordings{i} = checkPrexistingFieldAndAdd(project.recordings{i}, 'FOVsize', [128 128]);
-    project.recordings{i} = checkPrexistingFieldAndAdd(project.recordings{i}, 'frameRateHz', 100);
-    project.recordings{i} = checkPrexistingFieldAndAdd(project.recordings{i}, 'dataMachineF', 'uint16');
-    project.recordings{i} = checkPrexistingFieldAndAdd(project.recordings{i}, 'maskMachineF', 'uint8');
+    project.recordings{i}.meta = checkPrexistingFieldAndAdd(project.recordings{i}.meta, 'FOVsize', [128 128]);
+    project.recordings{i}.meta = checkPrexistingFieldAndAdd(project.recordings{i}.meta, 'frameRateHz', 100);
+    project.recordings{i}.meta = checkPrexistingFieldAndAdd(project.recordings{i}.meta, 'dataMachineF', 'uint16');
+    project.recordings{i}.meta = checkPrexistingFieldAndAdd(project.recordings{i}.meta, 'maskMachineF', 'uint8');
 end
 
+save([filename '.proj'], 'project', '-mat')
 
+clearvars -except project
 
 
