@@ -21,10 +21,10 @@ function fillBetweenCurves(x, topCurve, botCurve, varargin)
     falpha = p.Results.facealpha;
 
     
-    %x2 = [x, fliplr(x)];
-    x2 = [x, x];
+    x2 = [x, fliplr(x)];
+    %x2 = [x, x];
     
-    inBetween = [botCurve, topCurve];
+    inBetween = [botCurve, fliplr(topCurve)];
     h = fill(x2, inBetween, clr);
     
     set(h, 'facealpha', falpha)
