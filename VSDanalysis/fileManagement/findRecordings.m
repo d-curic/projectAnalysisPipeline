@@ -1,5 +1,5 @@
 
-function recordings = findRecordings(rootfolder, varargin)
+function recordings = findRecordings(rootfolder, extension, varargin)
 
 %any file containing the substring cullany will be removed. Ideally this
 %would be a cell so that I can accept multiple strings 
@@ -16,7 +16,9 @@ cullany = p.Results.cullFlag;
 ignoreCase = p.Results.ignoreCase;
 
 rootfolder = dirDelimiterCheck(rootfolder);
-S = dir(fullfile(rootfolder, ['**/*' '.raw']));
+extension = extensionCheck(extension);
+
+S = dir(fullfile(rootfolder, ['**/*' extension]));
 names = {S.name};
 folders = {S.folder};
 
