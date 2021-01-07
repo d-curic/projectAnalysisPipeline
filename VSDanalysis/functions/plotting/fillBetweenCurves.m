@@ -9,7 +9,7 @@ function fillBetweenCurves(x, topCurve, botCurve, varargin)
     addRequired(p,'topCurve');
     addRequired(p,'botCurve');
     
-    addParameter(p,'color',clr,@ischar);
+    addParameter(p,'color',clr);%,@ischar | @isnumeric);
     addParameter(p,'facealpha',falpha);
     addParameter(p,'edgealpha',ealpha);
     
