@@ -1,25 +1,25 @@
-pathtoDir = 'E:\newVSDpipeline\VSDanalysis_noGUI';
-projectname = 'testproject';
+pathtoDir = 'E:\newVSDpipeline\testdir\';
+projectname = 'CalciumWOFI';
 originalRecordingsRootFolder = 'E:\PhD\allADvsCtrl';
 
 %% create project locations and fetch recording names
 
 project = createProject(pathtoDir, projectname);
-recordings = findRecordings(originalRecordingsRootFolder, 'cullFlag', 'mask');
+recordings = findRecordings(originalRecordingsRootFolder, 'cullFlag', {'mask', '_raw'});
 project = createRecordingsSubdirectories(project, recordings);
 
-
-%% masks and LFPs
-
-project = findMasks(project);
-project = findLFPs(project);
-
-for i = 1:length(project.recordings)
-    project.recordings{i}.meta = checkPrexistingFieldAndAdd(project.recordings{i}.meta, 'FOVsize', [128 128]);
-    project.recordings{i}.meta = checkPrexistingFieldAndAdd(project.recordings{i}.meta, 'frameRateHz', 100);
-    project.recordings{i}.meta = checkPrexistingFieldAndAdd(project.recordings{i}.meta, 'dataMachineF', 'uint16');
-    project.recordings{i}.meta = checkPrexistingFieldAndAdd(project.recordings{i}.meta, 'maskMachineF', 'uint8');
-end
+% 
+% %% masks and LFPs
+% 
+% project = findMasks(project);
+% project = findLFPs(project);
+% 
+% for i = 1:length(project.recordings)
+%     project.recordings{i}.meta = checkPrexistingFieldAndAdd(project.recordings{i}.meta, 'FOVsize', [128 128]);
+%     project.recordings{i}.meta = checkPrexistingFieldAndAdd(project.recordings{i}.meta, 'frameRateHz', 100);
+%     project.recordings{i}.meta = checkPrexistingFieldAndAdd(project.recordings{i}.meta, 'dataMachineF', 'uint16');
+%     project.recordings{i}.meta = checkPrexistingFieldAndAdd(project.recordings{i}.meta, 'maskMachineF', 'uint8');
+% end
 %% create experiment
 
 expname = 'testexp';

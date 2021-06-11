@@ -1,4 +1,5 @@
 function [section, times] = segmentSeries(A)
+A(1) = 0; A(end)=0;
 ne0 = find(A~=0);                                   % Nonzero Elements
 ix0 = unique([ne0(1) ne0(diff([0 ne0])>1)]);        % Non-Zero Segment Start Indices
 eq0 = find(A==0);                                   % Zero Elements

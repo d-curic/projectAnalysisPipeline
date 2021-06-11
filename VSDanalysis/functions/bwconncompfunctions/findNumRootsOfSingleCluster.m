@@ -70,8 +70,10 @@ function [numroots, nn, roottime, rootprofile] = findNumRootsOfSingleCluster(p, 
 
     %this is handles the first frame
     fr2 = EventFrames(:,:,1);
-    fr2 = imdilate(fr2,se); fr2 = fr2 - min(min(fr2));
-    fr2(fr2 > 0) = 1;
+    if params.dilate
+        fr2 = imdilate(fr2,se); fr2 = fr2 - min(min(fr2));
+        fr2(fr2 > 0) = 1;
+    end
     CC2 = bwconncomp(fr2);
     numroots(1) = CC2.NumObjects;
     roottime(1) = zuq(1);

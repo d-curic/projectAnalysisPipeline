@@ -1,5 +1,5 @@
 
-function [md, fq] =  binPowerLawsTogether(data, nbins)
+function [md, fq, bins] =  binPowerLawsTogether(data, nbins)
 %data is a 1xN cell where N is the number of individual observations to be
 %binned
 
